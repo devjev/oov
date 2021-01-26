@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>oov_core</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Core.fs" />
+    <Compile Include="Utils.fs" />
+    <Compile Include="Validate.fs" />
+    <Compile Include="Library.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.12.1" />
+    <PackageReference Include="MimeTypeMapOfficial" Version="1.0.14" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+</Project>
