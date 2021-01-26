@@ -1,4 +1,4 @@
-namespace oov_webapi
+namespace OovWebApi
 
 open System
 open System.Collections.Generic
@@ -31,6 +31,5 @@ type Startup(configuration: IConfiguration) =
             .UseHttpsRedirection()
             .UseAuthorization()
             .UseSwagger()
-            .UseSwaggerUI(fun c -> c.SwaggerEndpoint("/swagger/v1/swagger.json", "OOV API"))
             .UseEndpoints(fun endpoints -> endpoints.MapControllers() |> ignore)
         |> ignore

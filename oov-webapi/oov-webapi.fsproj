@@ -4,13 +4,15 @@
     <RootNamespace>oov_webapi</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="WeatherForecast.fs" />
+    <Compile Include="ApiModel.fs" />
     <Compile Include="Controllers\Validate.fs" />
-    <Compile Include="Controllers/WeatherForecastController.fs" />
     <Compile Include="Startup.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\oov-core\oov-core.fsproj" />
   </ItemGroup>
 </Project>

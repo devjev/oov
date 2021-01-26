@@ -1,5 +1,7 @@
 namespace OovCore.Validate
 
+open System.IO
+
 
 module Validate =
     open System.Security.Cryptography
@@ -10,10 +12,10 @@ module Validate =
 
     let private sha256 = SHA256.Create()
 
-    let private getFileHash fname =
-        use fh = System.IO.File.OpenRead(fname)
-        let result = sha256.ComputeHash(fh) |> List.ofArray
-        fh.Close()
+    let private getFileHash (stream: Stream) =
+        let result =
+            sha256.ComputeHash(stream) |> List.ofArray
+
         result
 
     let rec private bytesToString (bytes: byte list) =
@@ -21,11 +23,10 @@ module Validate =
         | head :: tail -> head.ToString("x2") + (tail |> bytesToString)
         | [] -> ""
 
-    let private makeMetadata fname =
+    let private makeMetadata fname ftype stream =
         { FileName = fname
-          FileType = FileType.get fname
-          FileHash = fname |> getFileHash |> bytesToString
-          //   FileHash = "poopies"
+          FileType = ftype
+          FileHash = stream |> getFileHash |> bytesToString
           ValidationDateTime = System.DateTime.UtcNow }
 
     let private convertErrorType (errorType: ValidationErrorType): OovCore.ValidationErrorType =
@@ -56,7 +57,8 @@ module Validate =
 
         doc.Close()
 
-        let metadata = fname |> makeMetadata
+        let metadata =
+            makeMetadata fname <| FileType.get fname <| stream
 
         let status =
             if (Seq.length errors) > 0 then
@@ -71,19 +73,11 @@ module Validate =
 
         result
 
-    let streamWithName (fname: string) (stream: System.IO.Stream) =
+    let stream (fname: string) (stream: System.IO.Stream) =
         match FileType.get fname with
         | Document -> validateWordStream fname stream
         | _ ->
-            { Metadata = fname |> makeMetadata
-              Errors = List.empty
-              Status = Unavailable }
-
-    let streamWithType (ooxmlType: OoxmlFileType) (stream: System.IO.Stream) =
-        match ooxmlType with
-        | Document -> validateWordStream "unavailable" stream
-        | _ ->
-            { Metadata = "unavailable" |> makeMetadata
+            { Metadata = makeMetadata fname UnknownFileType stream
               Errors = List.empty
               Status = Unavailable }
 
@@ -91,4 +85,4 @@ module Validate =
         use ooxmlStream =
             System.IO.File.Open(fname, System.IO.FileMode.Open)
 
-        streamWithName fname ooxmlStream
+        stream fname ooxmlStream
