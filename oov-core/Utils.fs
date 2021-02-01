@@ -35,3 +35,22 @@ module FileType =
         | Equals _legacyXlsMimeType
         | Equals _legacyPptMimeType -> LegacyFileType
         | _ -> UnknownFileType
+
+module Hash =
+    open System.Security.Cryptography
+    open System.IO
+
+    let rec private bytesToString (bytes: byte list) =
+        match bytes with
+        | head :: tail -> head.ToString("x2") + (tail |> bytesToString)
+        | [] -> ""
+
+    let private sha256 = SHA256.Create()
+
+    let stream (stream: Stream) =
+        let result =
+            sha256.ComputeHash(stream) |> List.ofArray
+
+        result
+
+    let streamAsString (s: Stream) = s |> stream |> bytesToString

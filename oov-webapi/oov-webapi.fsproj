@@ -5,11 +5,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ApiModel.fs" />
+    <Compile Include="Store.fs" />
     <Compile Include="Controllers\Validate.fs" />
+    <Compile Include="Controllers\History.fs" />
     <Compile Include="Startup.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="RocksDbNative" Version="6.2.2" />
     <PackageReference Include="RocksDbSharp" Version="6.2.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
