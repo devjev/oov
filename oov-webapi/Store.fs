@@ -30,13 +30,24 @@ type DataStore(path: Option<string>) =
 
     member _.Keys =
         let rec keys(itr: Iterator) =
-            try
-                let skey = itr.ToString()
-                let next = itr.Next()
-                [ skey ] @ (next |> keys)
-            with _ -> []
+            if itr.Valid() then
+                let skey = itr.StringKey()
+                [ skey ] @ (itr.Next() |> keys)
+            else
+                []
 
-        db.NewIterator() |> keys
+        db.NewIterator().SeekToFirst() |> keys
+
+    member _.Pairs =
+        let rec pairs(itr: Iterator) =
+            if itr.Valid() then
+                let key = itr.StringKey()
+                let value = itr.Value()
+                [ (key, value) ] @ (itr.Next() |> pairs)
+            else
+                []
+
+        db.NewIterator().SeekToFirst() |> pairs
 
     interface IDisposable with
         member _.Dispose() = db.Dispose()

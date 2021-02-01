@@ -8,6 +8,7 @@
     <Compile Include="Store.fs" />
     <Compile Include="Controllers\Validate.fs" />
     <Compile Include="Controllers\History.fs" />
+    <Compile Include="Controllers\QueryHash.fs" />
     <Compile Include="Startup.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

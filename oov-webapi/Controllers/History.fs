@@ -15,4 +15,10 @@ type HistoryController(logger: ILogger<HistoryController>) =
     [<HttpGet>]
     member _.Get() =
         use storeFileNames = new DataStore(Some("__names"))
-        storeFileNames.Keys
+
+        seq {
+            for (key, value) in storeFileNames.Pairs ->
+                { Hash = key
+                  FileName = System.Text.Encoding.UTF8.GetString(value) }
+        }
+        |> List.ofSeq

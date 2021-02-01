@@ -16,6 +16,7 @@ type ValidateController(logger: ILogger<ValidateController>) =
     member _.Post([<FromForm>] payload: OoxmlPayload) =
         use storeResults = new DataStore(Some("__results"))
         use storeFileNames = new DataStore(Some("__names"))
+
         let stream = payload.Payload.OpenReadStream()
         let name = payload.Name
 

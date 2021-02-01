@@ -17,3 +17,5 @@ type OoxmlPayload() =
     member _.Payload
         with get () = _payload
         and set (v) = _payload <- v
+
+type HistoryRecord = { Hash: string; FileName: string }
