@@ -10,23 +10,10 @@ module Validate =
     open DocumentFormat.OpenXml.Validation
     open DocumentFormat.OpenXml.Packaging
 
-    let private sha256 = SHA256.Create()
-
-    let private getFileHash (stream: Stream) =
-        let result =
-            sha256.ComputeHash(stream) |> List.ofArray
-
-        result
-
-    let rec private bytesToString (bytes: byte list) =
-        match bytes with
-        | head :: tail -> head.ToString("x2") + (tail |> bytesToString)
-        | [] -> ""
-
     let private makeMetadata fname ftype stream =
         { FileName = fname
           FileType = ftype
-          FileHash = stream |> getFileHash |> bytesToString
+          FileHash = stream |> Utils.Hash.streamAsString
           ValidationDateTime = System.DateTime.UtcNow }
 
     let private convertErrorType (errorType: ValidationErrorType): OovCore.ValidationErrorType =
