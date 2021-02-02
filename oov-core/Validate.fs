@@ -1,10 +1,6 @@
 namespace OovCore.Validate
 
-open System.IO
-
-
 module Validate =
-    open System.Security.Cryptography
     open OovCore
     open OovCore.Utils
     open DocumentFormat.OpenXml.Validation
