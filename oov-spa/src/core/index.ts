@@ -4,7 +4,6 @@ export class Core {
   constructor() {}
 
   async getHistory<T extends HistoryRecord>(): Promise<T[]> {
-    console.log({ endpoint: this.historyEndpoint.href })
     const response = await fetch(this.historyEndpoint.href)
     const json = await response.json()
     return json

@@ -13,3 +13,5 @@ TODO:
 
 - oov WebUI
     * Have an SPA that allows graphical interaction with the API
+        * ~~Started~~
+        * Need to implement a redux store to make it not go all fucky with time

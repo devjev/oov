@@ -1,19 +1,19 @@
 import '../style/index.scss'
 import { JSX, For, createState } from 'solid-js'
 import { Core, HistoryRecord } from '../core'
+import OoxmlDiagnostics from './OoxmlDiagnostics'
 
 export function App(): JSX.Element {
   const core = new Core()
   const [state, setState] = createState({
+    hash: undefined as string | undefined,
     history: [] as HistoryRecord[],
   })
 
   core.getHistory().then((payload: HistoryRecord[]) => setState('history', payload))
 
   const clickHandler = (hash: string) => {
-    return (_: Event) => {
-      core.getByHash(hash).then((payload) => console.log(payload))
-    }
+    return (_: Event) => setState('hash', hash)
   }
 
   return (
@@ -33,6 +33,7 @@ export function App(): JSX.Element {
           )}
         </For>
       </ul>
+      <OoxmlDiagnostics hash={state.hash} />
     </main>
   )
 }
