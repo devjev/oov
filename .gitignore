@@ -10,7 +10,7 @@ release/bin_profiler
 # SPA output
 oov-spa/dist/oov-spa.js
 oov-spa/dist/oov-spa.map.js
-oov-spa/dist/oov-spa.css
+oov-spa/dist/css/oov-spa.css
 
 # Logs
 logs

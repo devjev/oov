@@ -1,0 +1,101 @@
+@use "colors_light";
+@use "colors_dark";
+@use "layout";
+@use "buttons";
+@use "theme" as *;
+
+@import "normalize.css/normalize";
+@import "typebase";
+// @import "@fortawesome/fontawesome-free/css/all";
+
+:root {
+    --measure: 62ch;
+    --sidebar-measure: 37ch;
+    --spacing-1: 0px;
+    --vertical-offset: 2ch;
+}
+
+html {
+    font-family: acumin-pro, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    // font-family: "Segoe UI", Helvetica, Tahoma, Geneva, Verdana, sans-serif;
+    font-family: bree, sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+body.dark {
+    @include theme(
+        $foreground: colors_dark.$foreground,
+        $background: colors_dark.$background,
+        $link: colors_dark.$link,
+        $link-hover-fg: colors_dark.$link-hover-fg,
+        $link-hover-bg: colors_dark.$link-hover-bg,
+        $prominent-bg: colors_dark.$prominent-bg,
+        $logo-url: "/static/logo-bunt-dark.svg",
+        $logo-url-active: "/static/logo-active-dark.svg"
+    );
+    letter-spacing: 0.2pt;
+}
+
+body.light {
+    @include theme(
+        $foreground: colors_light.$foreground,
+        $background: colors_light.$background,
+        $link: colors_light.$link,
+        $link-hover-fg: colors_light.$link-hover-fg,
+        $link-hover-bg: colors_light.$link-hover-bg,
+        $prominent-bg: colors_light.$prominent-bg,
+        $logo-url: "/static/logo-bunt-light.svg",
+        $logo-url-active: "/static/logo-active-light.svg"
+    );
+    letter-spacing: 0pt;
+}
+
+a.no-href {
+    cursor: pointer;
+}
+
+article.main-copy {
+    @include layout.centered-page();
+}
+
+.logo-container {
+    margin: var(--vertical-offset) auto var(--vertical-offset) auto;
+    @include buttons.box-button(128px, 32px);
+}
+
+.icon-button {
+    @include buttons.icon-button();
+}
+
+.with-sidebar {
+    overflow: hidden;
+}
+
+.with-sidebar > * {
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(var(--spacing-1) / 2 * -1);
+}
+
+.with-sidebar > * > * {
+    margin: calc(var(--spacing-1) / 2);
+    flex-basis: var(--sidebar-measure);
+    flex-grow: 1;
+}
+
+.with-sidebar > * > :last-child {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-width: calc(50% - var(--spacing-1));
+}

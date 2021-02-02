@@ -8,6 +8,7 @@ open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.AspNetCore.HttpsPolicy
 open Microsoft.AspNetCore.Mvc
+open Microsoft.AspNetCore.Cors
 open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
@@ -26,10 +27,21 @@ type Startup(configuration: IConfiguration) =
         if (env.IsDevelopment()) then
             app.UseDeveloperExceptionPage() |> ignore
 
+        let corsBuilder =
+            new Action<_>(
+                fun (builder: Infrastructure.CorsPolicyBuilder) ->
+                    builder
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowAnyOrigin()
+                    |> ignore
+            )
+
         app
             .UseRouting()
-            .UseHttpsRedirection()
-            .UseAuthorization()
+            .UseCors(corsBuilder)
+            // .UseHttpsRedirection()
+            // .UseAuthorization()
             .UseSwagger()
             .UseEndpoints(fun endpoints -> endpoints.MapControllers() |> ignore)
         |> ignore

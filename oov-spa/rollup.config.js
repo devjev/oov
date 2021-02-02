@@ -7,6 +7,7 @@ import scss from 'rollup-plugin-scss'
 import img from 'rollup-plugin-img'
 import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
+import json from '@rollup/plugin-json'
 
 const extensions = ['.tsx', '.ts', '.js', '.jsx', '.css', '.scss']
 const isDevelopmentMode = process.env.NODE_ENV !== 'prod'
@@ -22,6 +23,7 @@ export default {
   preserveEntrySignatures: false,
   plugins: [
     del({ targets: ['dist/*.css', 'dist/*.js', 'dist/static'] }),
+    json(),
     scss({
       sass: require('sass'),
       output: 'dist/css/oov-spa.css',

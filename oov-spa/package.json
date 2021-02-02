@@ -8,14 +8,15 @@
     "serve": "rollup -cw"
   },
   "dependencies": {
-    "solid-js": "^0.23.11",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "solid-js": "^0.23.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.0.1",
     "babel-preset-solid": "^0.23.8",
     "cross-env": "^7.0.3",
@@ -27,5 +28,11 @@
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-serve": "^1.1.0",
     "sass": "^1.32.2"
+  },
+  "config": {
+    "endpoint": "http://localhost:5000",
+    "history": "/api/history",
+    "validate": "/api/validate",
+    "query": "/api/query"
   }
 }
