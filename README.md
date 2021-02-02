@@ -7,7 +7,7 @@ TODO:
     * ~~Have an endpoint for list of all queried/validated documents~~
     * ~~Have an endpoint to search validated documents by hash~~
     * ~~Have an endpoint to search validated documents by name~~
-        * This requires me actually reading the docs and thinking about the
+        * This requires me actually to read the docs and think about the
           problem and that's just expecting too much
     * Use column families and batch writes in ValidateController
 
