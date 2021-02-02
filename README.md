@@ -12,6 +12,7 @@ TODO:
     * Use column families and batch writes in ValidateController
     * Maybe have a statistics data store to track outliers in error
       distributions
+    * Update history via push. See [this](http://www.binaryintellect.net/articles/a77ac135-c756-4ee0-9e99-0a904959de94.aspx)
 
 - oov WebUI
     * Have an SPA that allows graphical interaction with the API
