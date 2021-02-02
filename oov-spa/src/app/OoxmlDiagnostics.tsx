@@ -28,6 +28,7 @@ export function OoxmlDiagnostics<T extends OoxmlErrorsViewProperties>(props: T):
 
   return (
     <section class="ooxml-error-statistics">
+      <h2>Results</h2>
       <div>hash: {props.hash}</div>
       <For each={state.stats}>
         {([id, freq]: any[]) => (

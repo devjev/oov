@@ -16,8 +16,8 @@
 }
 
 html {
-    font-family: acumin-pro, sans-serif;
-    font-weight: 300;
+    font-family: aktiv-grotesk, sans-serif;
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -27,9 +27,8 @@ h3,
 h4,
 h5,
 h6 {
-    // font-family: "Segoe UI", Helvetica, Tahoma, Geneva, Verdana, sans-serif;
-    font-family: bree, sans-serif;
-    font-weight: 600;
+    font-family: aktiv-grotesk, sans-serif;
+    font-weight: 700;
     font-style: italic;
 }
 
@@ -44,7 +43,7 @@ body.dark {
         $logo-url: "/static/logo-bunt-dark.svg",
         $logo-url-active: "/static/logo-active-dark.svg"
     );
-    letter-spacing: 0.2pt;
+    letter-spacing: 0.35pt;
 }
 
 body.light {
