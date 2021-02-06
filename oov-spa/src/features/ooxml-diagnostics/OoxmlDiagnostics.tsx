@@ -1,9 +1,14 @@
-import { For, createState, createMemo, createEffect } from 'solid-js'
+import { For, createState, createEffect } from 'solid-js'
 import { JSX } from 'solid-js/jsx-runtime'
-import { Core } from '../core'
+import { Api } from '../../core'
 
+/**
+ * <OoxmlDiagnostics hash=HASH />
+ * Component showing diagnostics from OOXML validation.
+ * @param props
+ */
 export function OoxmlDiagnostics<T extends OoxmlErrorsViewProperties>(props: T): JSX.Element {
-  const core = new Core()
+  const core = new Api()
   const [state, setState] = createState({
     errors: [] as any[],
     stats: {} as any,
@@ -11,6 +16,8 @@ export function OoxmlDiagnostics<T extends OoxmlErrorsViewProperties>(props: T):
 
   createEffect(() => {
     if (props.hash) {
+      // TODO this should go through redux-saga
+      // TODO also, seems like it might be a function for core functionality?
       core.getByHash(props.hash).then((payload) => {
         setState('errors', payload.value.errors)
         const freqMap = state.errors.reduce((acc, x) => {

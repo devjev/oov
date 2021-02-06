@@ -11,3 +11,25 @@
     padding-top: var(--vertical-offset);
     padding-bottom: var(--vertical-offset);
 }
+
+.with-sidebar {
+    overflow: hidden;
+}
+
+.with-sidebar > * {
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(var(--spacing-1) / 2 * -1);
+}
+
+.with-sidebar > * > * {
+    margin: calc(var(--spacing-1) / 2);
+    flex-basis: var(--sidebar-measure);
+    flex-grow: 1;
+}
+
+.with-sidebar > * > :last-child {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-width: calc(50% - var(--spacing-1));
+}

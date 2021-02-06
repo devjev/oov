@@ -1,0 +1,8 @@
+.history-list {
+    & > li {
+        margin-bottom: var(--vertical-offset);
+    }
+    & > li:last-child {
+        margin-bottom: auto;
+    }
+}
