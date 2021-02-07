@@ -13,9 +13,9 @@
 }
 
 .record-container {
-    border-radius: 6px;
+    border-radius: calc(var(--default-font-size) * 0.35);
     padding: calc(var(--default-font-size) * 1.2);
-    background-color: rgba(0, 0, 0, 0.075);
+    background-color: var(--color-prominent-highlight);
     &:hover {
         background-color: var(--color-link-hover-background);
 

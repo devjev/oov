@@ -1,0 +1,37 @@
+nav.command-bar {
+    padding-top: calc(var(--default-font-size) * 0.75);
+    padding-bottom: calc(var(--default-font-size) * 0.75);
+    // background-color: var(--color-prominent-highlight);
+}
+
+.command-button {
+    padding: calc(var(--default-font-size) * 0.75);
+    border-radius: calc(var(--default-font-size) * 0.35);
+    color: var(--color-link);
+    cursor: pointer;
+    &:hover {
+        background-color: var(--color-link-hover-background);
+        color: var(--color-foreground);
+    }
+    &:active {
+        background-color: var(--color-activated);
+        color: var(--color-background);
+    }
+}
+
+.command-bar-buttons {
+    --space: 1rem;
+    overflow: hidden;
+}
+
+.command-bar-buttons > * {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: calc(var(--space) / 2 * -1);
+}
+
+.command-bar-buttons > * > * {
+    margin: calc(var(--space) / 2);
+}

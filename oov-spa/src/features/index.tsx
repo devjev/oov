@@ -4,9 +4,10 @@ import { JSX } from 'solid-js/jsx-runtime'
 // export type { OoxmlErrorsViewProperties } from './ooxml-diagnostics/OoxmlDiagnostics'
 
 export { HistoryList } from './history-list/HistoryList'
-// export type { HistoryListProperties } from './history-list/HistoryList'
+export type { HistoryListProperties } from './history-list/HistoryList'
 
 export { ValidationResultView } from './validation-result-view/ValidationResultView'
+export type { ValidationResultViewProperties } from './validation-result-view/ValidationResultView'
 
 // Construct Root Saga
 import { fork } from 'redux-saga/effects'

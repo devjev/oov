@@ -2,7 +2,7 @@ div.link-container {
     --margin-vertical-offset: calc(var(--default-font-size) * 0.1);
     --margin-horizontal-offset: calc(var(--default-font-size) * 0.35);
     display: inline-block;
-    border-radius: 4px;
+    border-radius: calc(var(--default-font-size) * 0.35);
     padding: var(--margin-vertical-offset) var(--margin-horizontal-offset) var(--margin-vertical-offset)
         var(--margin-horizontal-offset);
     margin: calc(-1 * var(--margin-vertical-offset)) calc(-1 * var(--margin-horizontal-offset))

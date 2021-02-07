@@ -2,7 +2,7 @@
 @use "layout" as *;
 @use "typography" as *;
 @import "normalize.css/normalize";
-// @import "@fortawesome/fontawesome-free/css/all";
+@import "@fortawesome/fontawesome-free/css/all";
 
 :root {
     --copy-font: aktiv-grotesk, sans-serif;
@@ -10,7 +10,7 @@
     --default-font-size: 14pt;
     --default-mono-size: 10pt;
 
-    --vertical-offset: 2ch;
+    --vertical-offset: 14pt;
     --measure: 67ch;
     --sidebar-measure: 37ch;
 }
@@ -30,10 +30,6 @@ body {
     background-image: url("/static/noise-heavy.png");
     background-color: var(--color-background);
     color: var(--color-foreground);
-    .with-sidebar > * > :first-child {
-        background-image: none;
-        background-color: var(--color-prominent-background);
-    }
 }
 
 body.dark {
@@ -43,6 +39,7 @@ body.dark {
     --color-link-hover-foreground: #fdda00;
     --color-link-hover-background: #f8f12a10;
     --color-prominent-background: #222526;
+    --color-prominent-highlight: #1f2223;
     --color-activated: #00c08b;
     --default-mono-font-weight: 300;
     --default-copy-font-weight: 300;
@@ -58,6 +55,7 @@ body.light {
     --color-link-hover-foreground: #4e4a34;
     --color-link-hover-background: #f8f12a60;
     --color-prominent-background: #f0f0f0;
+    --color-prominent-highlight: #dedede;
     --color-activated: #00754a;
     --default-mono-font-weight: 400;
     --default-copy-font-weight: 400;
@@ -100,6 +98,17 @@ table {
     }
 }
 
+main > {
+    .with-sidebar > * > :first-child {
+        background-image: none;
+        background-color: var(--color-prominent-background);
+    }
+}
+
 table:last-of-type {
     margin-bottom: auto;
+}
+
+button.icon {
+    @include buttons.icon-button();
 }

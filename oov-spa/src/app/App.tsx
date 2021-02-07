@@ -3,6 +3,7 @@ import { JSX, createState } from 'solid-js'
 import { HistoryList } from '../features/history-list/HistoryList'
 import { NonSidebarContent, Sidebar, SidebarLayout, Link } from '../ui'
 import { ValidationResultView } from '../features'
+import { CommandBar } from '../features/command-bar/CommandBar'
 
 export function App(): JSX.Element {
   const [state, setState] = createState({
@@ -20,6 +21,7 @@ export function App(): JSX.Element {
           />
         </Sidebar>
         <NonSidebarContent>
+          <CommandBar />
           <section class="centered">
             <ValidationResultView hash={state.selectedHash} />
           </section>
