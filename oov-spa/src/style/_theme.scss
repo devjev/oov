@@ -8,6 +8,13 @@
     $logo-url,
     $logo-url-active
 ) {
+    --color-foreground: $foreground;
+    --color-background: $background;
+    --color-link: $link;
+    --color-link-hover-foreground: $link-hover-fg;
+    --color-link-hover-background: $link-hover-bg;
+    --color-prominent-background: $prominent-bg;
+
     background-image: url("/static/noise.png");
     background-color: $background;
     color: $foreground;
@@ -29,6 +36,8 @@
             background-color: $link-hover-bg;
         }
     }
+
+    // TODO this should be moved somewhere else
     // Background color of the sidebar
     .with-sidebar > * > :first-child {
         background-image: none;
