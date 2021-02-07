@@ -3,6 +3,7 @@ import { JSX, For, createState } from 'solid-js'
 import { InlineMonospace } from '../../ui'
 import { HistoryRecord } from '../../app/api'
 import { store } from '../../app/store'
+import { initialize } from './historySlice'
 
 export function HistoryList(): JSX.Element {
   const [state, setState] = createState({
@@ -12,10 +13,10 @@ export function HistoryList(): JSX.Element {
 
   store.subscribe(() => {
     const storeState = store.getState()
-    setState('history', storeState.history.value)
+    setState('history', storeState.history)
   })
 
-  store.dispatch({ type: 'history/initialize' })
+  store.dispatch(initialize({}))
 
   return (
     <ul class="history-list">
