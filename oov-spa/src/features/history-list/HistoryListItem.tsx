@@ -15,11 +15,9 @@ export function HistoryListItem<T extends HistoryListItemProperties>(props: T): 
   }
 
   return (
-    <li class="history-list-item">
+    <li class="history-list-item" onClick={handleClick}>
       <div class="record-container">
-        <div class="item-heading">
-          <Link onClick={handleClick}>{props.item.fileName}</Link>
-        </div>
+        <div class="item-heading">{props.item.fileName}</div>
         <div class="hash-container">
           <InlineMonospace>
             <Hash>{props.item.hash}</Hash>

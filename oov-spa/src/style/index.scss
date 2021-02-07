@@ -7,7 +7,7 @@
 :root {
     --copy-font: aktiv-grotesk, sans-serif;
     --mono-font: ibm-plex-mono, monospace;
-    --default-font-size: 12pt;
+    --default-font-size: 14pt;
     --default-mono-size: 10pt;
 
     --vertical-offset: 2ch;
@@ -43,8 +43,11 @@ body.dark {
     --color-link-hover-foreground: #fdda00;
     --color-link-hover-background: #f8f12a10;
     --color-prominent-background: #222526;
+    --color-activated: #00c08b;
     --default-mono-font-weight: 300;
     --default-copy-font-weight: 300;
+    --bold-mono-font-weight: 400;
+    --bold-copy-font-weight: 500;
     letter-spacing: 0.104pt;
 }
 
@@ -55,8 +58,12 @@ body.light {
     --color-link-hover-foreground: #4e4a34;
     --color-link-hover-background: #f8f12a60;
     --color-prominent-background: #f0f0f0;
+    // --color-activated: #00c08b;
+    --color-activated: #00754a;
     --default-mono-font-weight: 400;
     --default-copy-font-weight: 400;
+    --bold-mono-font-weight: 600;
+    --bold-copy-font-weight: 700;
     letter-spacing: 0pt;
 }
 

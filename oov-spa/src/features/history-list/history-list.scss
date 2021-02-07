@@ -5,6 +5,7 @@
     & > li {
         padding: var(--vertical-offset) var(--vertical-offset) 0 var(--vertical-offset);
         list-style: none inside;
+        cursor: pointer;
     }
     & > li:last-child {
         padding: var(--vertical-offset);
@@ -17,9 +18,25 @@
     background-color: rgba(0, 0, 0, 0.075);
     &:hover {
         background-color: var(--color-link-hover-background);
+
+        // All colors, both the heading and whichever text is in the container
+        // should be the same color on hover.
+        color: var(--color-link-hover-foreground);
+        .item-heading {
+            color: var(--color-link-hover-foreground);
+        }
+    }
+    &:active {
+        background-color: var(--color-activated);
+        color: var(--color-background);
+        .item-heading {
+            color: var(--color-background);
+        }
     }
 
     .item-heading {
         margin-bottom: var(--vertical-offset);
+        color: var(--color-link);
+        font-weight: var(--bold-copy-font-weight);
     }
 }

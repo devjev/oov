@@ -1,6 +1,6 @@
 div.link-container {
-    --margin-vertical-offset: calc(var(--default-font-size) * 0.35);
-    --margin-horizontal-offset: calc(var(--default-font-size) * 0.75);
+    --margin-vertical-offset: calc(var(--default-font-size) * 0.1);
+    --margin-horizontal-offset: calc(var(--default-font-size) * 0.35);
     display: inline-block;
     border-radius: 4px;
     padding: var(--margin-vertical-offset) var(--margin-horizontal-offset) var(--margin-vertical-offset)
@@ -11,6 +11,12 @@ div.link-container {
         background-color: var(--color-link-hover-background);
         & > a {
             color: var(--color-link-hover-foreground);
+        }
+    }
+    &:active {
+        background-color: var(--color-activated);
+        & > a {
+            color: var(--color-background);
         }
     }
     & > a {
