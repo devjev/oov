@@ -72,6 +72,10 @@ section.centered {
     @include centered-page();
 }
 
+.full-height {
+    min-height: 100vh;
+}
+
 table {
     width: 100%;
     margin-bottom: var(--default-zeilenabstand);

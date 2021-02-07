@@ -21,10 +21,12 @@ export function App(): JSX.Element {
           />
         </Sidebar>
         <NonSidebarContent>
-          <CommandBar />
-          <section class="centered">
-            <ValidationResultView hash={state.selectedHash} />
-          </section>
+          <div class="full-height">
+            <CommandBar />
+            <section class="centered">
+              <ValidationResultView hash={state.selectedHash} />
+            </section>
+          </div>
         </NonSidebarContent>
       </SidebarLayout>
     </main>
