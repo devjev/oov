@@ -17,8 +17,8 @@ TODO:
 - oov WebUI
     * Have an SPA that allows graphical interaction with the API
         * ~~Started~~
-        * Need to implement a redux store to make it not go all fucky with time
-        * Use redux sagas to handle asynchronous calls
+        * ~~Need to implement a redux store to make it not go all fucky with time~~
+        * ~~Use redux sagas to handle asynchronous calls~~
         * Use local storage for local client caching of results to reduce UI
           latency. Caching should be alright, since primary identity is driven
           by file digest hashes.
