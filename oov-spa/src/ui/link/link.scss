@@ -9,7 +9,6 @@ div.link-container {
         calc(-1 * var(--margin-vertical-offset)) calc(-1 * var(--margin-horizontal-offset));
     &:hover {
         background-color: var(--color-link-hover-background);
-        transform: translate(0px, -3px);
         & > a {
             color: var(--color-link-hover-foreground);
         }

@@ -1,8 +1,25 @@
 .history-list {
+    padding: 0;
+    margin: 0;
+
     & > li {
-        margin-bottom: var(--vertical-offset);
+        padding: var(--vertical-offset) var(--vertical-offset) 0 var(--vertical-offset);
+        list-style: none inside;
     }
     & > li:last-child {
-        margin-bottom: auto;
+        padding: var(--vertical-offset);
+    }
+}
+
+.record-container {
+    border-radius: 6px;
+    padding: calc(var(--default-font-size) * 1.2);
+    background-color: rgba(0, 0, 0, 0.075);
+    &:hover {
+        background-color: var(--color-link-hover-background);
+    }
+
+    .item-heading {
+        margin-bottom: var(--vertical-offset);
     }
 }
