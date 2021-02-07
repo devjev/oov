@@ -3,6 +3,7 @@ import { fetch } from './validationResultSlice'
 import { store } from '../../app/store'
 import { ValidationResult } from '../../app/api'
 import { Hash, InlineMonospace } from '../../ui'
+import { ValidationErrorDisplay } from '../validation-error-display/ValidationErrorDisplay'
 
 export interface ValidationResultViewProperties {
   hash?: string
@@ -49,6 +50,8 @@ export function ValidationResultView<T extends ValidationResultViewProperties>(p
               </tr>
             </tbody>
           </table>
+
+          <ValidationErrorDisplay validationResults={resultData() as ValidationResult} />
         </Match>
       </Switch>
     </section>
