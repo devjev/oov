@@ -19,6 +19,7 @@ export default {
     name: 'oov-spa',
     dir: 'dist',
     format: 'es',
+    sourcemap: isDevelopmentMode,
   },
   treeshake: !isDevelopmentMode,
   preserveEntrySignatures: false,
