@@ -1,9 +1,9 @@
 import './history-list.scss'
 import { JSX, For, createState } from 'solid-js'
-import { Hash, InlineMonospace, Link } from '../../ui'
 import { HistoryRecord } from '../../app/api'
 import { store } from '../../app/store'
 import { initialize } from './historySlice'
+import { HistoryListItem } from './HistoryListItem'
 
 export interface HistoryListProperties {
   onSelect?: (hash: string) => void
@@ -36,18 +36,7 @@ export function HistoryList<T extends HistoryListProperties>(props: T): JSX.Elem
   return (
     <ul class="history-list">
       <For each={state.history}>
-        {(record: HistoryRecord) => (
-          <li>
-            <div>
-              <Link onClick={clickHandler(record.hash)}>{record.fileName}</Link>
-            </div>
-            <div>
-              <InlineMonospace>
-                <Hash>{record.hash}</Hash>
-              </InlineMonospace>
-            </div>
-          </li>
-        )}
+        {(record: HistoryRecord) => <HistoryListItem item={record} onClick={clickHandler(record.hash)} />}
       </For>
     </ul>
   )

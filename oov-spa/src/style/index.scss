@@ -76,6 +76,9 @@ table {
         td {
             background-color: var(--color-prominent-background);
             font-size: calc(0.85 * var(--default-font-size));
+            vertical-align: top;
+            padding-top: calc(0.45 * var(--default-font-size));
+            padding-bottom: calc(0.45 * var(--default-font-size));
         }
         th {
             text-align: left;
