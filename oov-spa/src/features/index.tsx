@@ -13,8 +13,10 @@ export type { ValidationResultViewProperties } from './validation-result-view/Va
 import { fork } from 'redux-saga/effects'
 import historyListSaga from './history-list/historyListSaga'
 import validationResultSaga from './validation-result-view/validationResultSaga'
+import commandBarSaga from './command-bar/commandBarSaga'
 
 export function* rootSaga() {
   yield fork(historyListSaga)
   yield fork(validationResultSaga)
+  yield fork(commandBarSaga)
 }

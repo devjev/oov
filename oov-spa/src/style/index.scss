@@ -11,7 +11,7 @@
     --default-mono-size: 10pt;
 
     --vertical-offset: 14pt;
-    --measure: 67ch;
+    --measure: 70ch;
     --sidebar-measure: 37ch;
 }
 
@@ -30,6 +30,7 @@ body {
     background-image: url("/static/noise-heavy.png");
     background-color: var(--color-background);
     color: var(--color-foreground);
+    overflow-y: scroll; /* Show vertical scrollbar */
 }
 
 body.dark {

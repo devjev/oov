@@ -1,7 +1,6 @@
 nav.command-bar {
     padding-top: calc(var(--default-font-size) * 0.75);
     padding-bottom: calc(var(--default-font-size) * 0.75);
-    // background-color: var(--color-prominent-highlight);
 }
 
 .command-button {
@@ -11,7 +10,7 @@ nav.command-bar {
     cursor: pointer;
     &:hover {
         background-color: var(--color-link-hover-background);
-        color: var(--color-foreground);
+        color: var(--color-link-hover-foreground);
     }
     &:active {
         background-color: var(--color-activated);

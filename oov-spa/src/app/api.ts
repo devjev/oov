@@ -1,8 +1,16 @@
 import * as appPackage from '../../package.json'
+import * as lf from 'localforage'
 
 export interface HistoryRecord {
   hash: string
   fileName: string
+}
+
+export interface AppConfig {
+  view: 'new' | 'view'
+  config: {
+    theme: 'light' | 'dark'
+  }
 }
 
 export interface ValidationResult {
@@ -50,7 +58,25 @@ export interface ValidationErrorType {
   tag: number
 }
 
-export interface ValidationResult {}
+export async function getConfig(): Promise<AppConfig> {
+  const config: AppConfig | null = await lf.getItem('config')
+  if (config !== null) {
+    return config
+  } else {
+    const defaultConfig: AppConfig = {
+      view: 'new',
+      config: {
+        theme: 'light',
+      },
+    }
+    await setConfig(defaultConfig)
+    return defaultConfig
+  }
+}
+
+export async function setConfig(cfg: AppConfig): Promise<void> {
+  await lf.setItem('config', cfg)
+}
 
 export async function getHistory<T extends HistoryRecord>(): Promise<T[]> {
   const response = await fetch(historyEndpoint().href)
@@ -63,6 +89,15 @@ export async function getByHash(hash: string): Promise<ValidationResult> {
   const response = await fetch(queryUrl.href)
   const json = await response.json()
   return json.value
+}
+
+export function invertTheme(theme: 'light' | 'dark'): 'light' | 'dark' {
+  switch (theme) {
+    case 'light':
+      return 'dark'
+    case 'dark':
+      return 'light'
+  }
 }
 
 function endpoint(): URL {

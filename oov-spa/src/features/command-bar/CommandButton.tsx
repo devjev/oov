@@ -7,5 +7,9 @@ export interface CommandButtonProperties {
 }
 
 export function CommandButton<T extends CommandButtonProperties>(props: T): JSX.Element {
-  return <div class="command-button">{props.children}</div>
+  return (
+    <div class="command-button" onClick={props.onClick}>
+      {props.children}
+    </div>
+  )
 }
