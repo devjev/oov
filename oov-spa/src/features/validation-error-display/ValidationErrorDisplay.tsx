@@ -1,5 +1,6 @@
-import { JSX } from 'solid-js'
+import { JSX, createSignal } from 'solid-js'
 import { ValidationResult } from '../../app/api'
+import { ValidationErrorList } from './ValidationErrorList'
 import { ValidationErrorStatistics } from './ValidationErrorStatistics'
 
 export interface ValidationErrorDisplayProperties {
@@ -7,5 +8,14 @@ export interface ValidationErrorDisplayProperties {
 }
 
 export function ValidationErrorDisplay<T extends ValidationErrorDisplayProperties>(props: T): JSX.Element {
-  return <ValidationErrorStatistics validationResult={props.validationResults} />
+  const [selectedErrorId, setErrorId] = createSignal(undefined as string | undefined)
+  return (
+    <>
+      <ValidationErrorStatistics
+        validationResult={props.validationResults}
+        onClick={(errorId) => setErrorId(errorId)}
+      />
+      <ValidationErrorList validationResult={props.validationResults} errorId={selectedErrorId()} />
+    </>
+  )
 }
