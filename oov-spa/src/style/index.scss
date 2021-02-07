@@ -1,14 +1,12 @@
-@use "colors_light";
-@use "colors_dark";
 @use "buttons";
 @use "layout" as *;
-@use "theme" as *;
 
 @import "normalize.css/normalize";
 @import "typebase";
 // @import "@fortawesome/fontawesome-free/css/all";
 
 :root {
+    --default-font-size: 14pt;
     --measure: 62ch;
     --sidebar-measure: 37ch;
     --spacing-1: 0px;
@@ -32,31 +30,48 @@ h6 {
     font-style: italic;
 }
 
+body {
+    background-image: url("/static/noise-heavy.png");
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    // a {
+    //     display: inline-block;
+    //     border-radius: 3px;
+    //     color: var(--color-link);
+    //     &:hover {
+    //         background-color: var(--color-link-hover-background);
+    //         color: var(--color-link-hover-foreground);
+    //     }
+    // }
+    // TODO this should be moved somewhere else
+    // Background color of the sidebar
+    .with-sidebar > * > :first-child {
+        background-image: none;
+        background-color: var(--color-prominent-background);
+    }
+}
+
 body.dark {
-    @include theme(
-        $foreground: colors_dark.$foreground,
-        $background: colors_dark.$background,
-        $link: colors_dark.$link,
-        $link-hover-fg: colors_dark.$link-hover-fg,
-        $link-hover-bg: colors_dark.$link-hover-bg,
-        $prominent-bg: colors_dark.$prominent-bg,
-        $logo-url: "/static/logo-bunt-dark.svg",
-        $logo-url-active: "/static/logo-active-dark.svg"
-    );
+    --color-foreground: #beb7b3;
+    --color-background: #25282a;
+    --color-link: #74d1ea;
+    --color-link-hover-foreground: #fdda00;
+    --color-link-hover-background: #f8f12a10;
+    --color-prominent-background: #222526;
+    --default-mono-font-weight: 300;
+    --default-copy-font-weight: 400;
     letter-spacing: 0.35pt;
 }
 
 body.light {
-    @include theme(
-        $foreground: colors_light.$foreground,
-        $background: colors_light.$background,
-        $link: colors_light.$link,
-        $link-hover-fg: colors_light.$link-hover-fg,
-        $link-hover-bg: colors_light.$link-hover-bg,
-        $prominent-bg: colors_light.$prominent-bg,
-        $logo-url: "/static/logo-bunt-light.svg",
-        $logo-url-active: "/static/logo-active-light.svg"
-    );
+    --color-foreground: #000006;
+    --color-background: #ffffff;
+    --color-link: #001ca7;
+    --color-link-hover-foreground: #4e4a34;
+    --color-link-hover-background: #f8f12a60;
+    --color-prominent-background: #f0f0f0;
+    --default-mono-font-weight: 400;
+    --default-copy-font-weight: 400;
     letter-spacing: 0pt;
 }
 
@@ -64,18 +79,6 @@ a.no-href {
     cursor: pointer;
 }
 
-article.main-copy {
-    @include centered-page();
-}
-
 .icon-button {
     @include buttons.icon-button();
-}
-
-span.inline-monospace {
-    font-family: ibm-plex-mono, monospace;
-    font-weight: 300;
-    font-style: italic;
-    font-size: 95%;
-    border-radius: 3px;
 }

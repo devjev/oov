@@ -1,6 +1,6 @@
 import './history-list.scss'
 import { JSX, For, createState } from 'solid-js'
-import { InlineMonospace } from '../../ui'
+import { InlineMonospace, Link } from '../../ui'
 import { HistoryRecord } from '../../app/api'
 import { store } from '../../app/store'
 import { initialize } from './historySlice'
@@ -40,9 +40,7 @@ export function HistoryList<T extends HistoryListProperties>(props: T): JSX.Elem
           <li>
             <div>
               <InlineMonospace>
-                <a class="no-href" onClick={clickHandler(record.hash)}>
-                  {record.hash}
-                </a>
+                <Link onClick={clickHandler(record.hash)}>{record.hash}</Link>
               </InlineMonospace>
             </div>
             <div>

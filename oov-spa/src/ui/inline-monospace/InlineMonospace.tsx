@@ -1,3 +1,4 @@
+import './inline-monospace.scss'
 import { JSX } from 'solid-js/jsx-runtime'
 import { ChildElement } from '../prelude'
 
