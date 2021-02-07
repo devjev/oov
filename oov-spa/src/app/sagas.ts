@@ -1,18 +1,20 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import { Api } from './api'
 
-function* fetchHistory() {
-  try {
-    const api = new Api()
-    const history = yield call(api.getHistory)
-    yield put({ type: 'history/update', history: history })
-  } catch (e) {
-    yield put({ type: 'history/failed', message: e.message })
+function* initializeHistory() {
+  const api = new Api()
+
+  // This is needed, because `this` value gets messed up by the saga call(fn) API
+  const callback = async () => {
+    return await api.getHistory()
   }
+
+  const history = yield call(callback)
+  yield put({ type: 'history/update', payload: history })
 }
 
 function* historySaga() {
-  yield takeLatest('history/update', fetchHistory)
+  yield takeEvery('history/initialize', initializeHistory)
 }
 
 export default historySaga

@@ -15,6 +15,8 @@ export function HistoryList(): JSX.Element {
     setState('history', storeState.history.value)
   })
 
+  store.dispatch({ type: 'history/initialize' })
+
   return (
     <ul class="history-list">
       <For each={state.history}>

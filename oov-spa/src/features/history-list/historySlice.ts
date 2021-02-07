@@ -7,16 +7,14 @@ export const historySlice = createSlice({
     value: [] as HistoryRecord[],
   },
   reducers: {
-    update: (state, action) => {
-      // Just dumb
-      state.value.push(...action.payload)
+    initialize: (state, action) => {
+      // side-effects handled by Saga middleware
     },
-    failed: (state) => {
-      // Just dumb
-      console.log(state)
+    update: (state, action) => {
+      state.value.push(...action.payload)
     },
   },
 })
 
-export const { update, failed } = historySlice.actions
+export const { update } = historySlice.actions
 export default historySlice.reducer
