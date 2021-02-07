@@ -1,0 +1,16 @@
+body {
+    --default-zeilenabstand: calc(var(--default-font-size) * 1.85);
+    font-family: var(--copy-font);
+    font-weight: var(--default-copy-font-weight);
+    font-style: normal;
+    font-size: var(--default-font-size);
+    -webkit-font-smoothing: antialiased;
+    p {
+        line-height: var(--default-zeilenabstand);
+        word-spacing: calc(var(--default-font-size) * 0.0975);
+        margin-bottom: calc(var(--default-font-size) * 1.75);
+        &:last-of-type {
+            margin-bottom: auto;
+        }
+    }
+}

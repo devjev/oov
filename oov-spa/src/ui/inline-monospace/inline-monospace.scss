@@ -1,7 +1,6 @@
 span.inline-monospace {
-    font-family: ibm-plex-mono, monospace;
+    font-size: var(--default-mono-size);
+    font-family: var(--mono-font);
     font-weight: var(--default-mono-font-weight);
     font-style: italic;
-    font-size: 95%;
-    border-radius: 3px;
 }

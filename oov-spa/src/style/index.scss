@@ -1,22 +1,18 @@
 @use "buttons";
 @use "layout" as *;
-
+@use "typography" as *;
 @import "normalize.css/normalize";
-@import "typebase";
 // @import "@fortawesome/fontawesome-free/css/all";
 
 :root {
-    --default-font-size: 14pt;
-    --measure: 62ch;
-    --sidebar-measure: 37ch;
-    --spacing-1: 0px;
-    --vertical-offset: 2ch;
-}
+    --copy-font: aktiv-grotesk, sans-serif;
+    --mono-font: ibm-plex-mono, monospace;
+    --default-font-size: 12pt;
+    --default-mono-size: 10pt;
 
-html {
-    font-family: aktiv-grotesk, sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    --vertical-offset: 2ch;
+    --measure: 67ch;
+    --sidebar-measure: 37ch;
 }
 
 h1,
@@ -34,17 +30,6 @@ body {
     background-image: url("/static/noise-heavy.png");
     background-color: var(--color-background);
     color: var(--color-foreground);
-    // a {
-    //     display: inline-block;
-    //     border-radius: 3px;
-    //     color: var(--color-link);
-    //     &:hover {
-    //         background-color: var(--color-link-hover-background);
-    //         color: var(--color-link-hover-foreground);
-    //     }
-    // }
-    // TODO this should be moved somewhere else
-    // Background color of the sidebar
     .with-sidebar > * > :first-child {
         background-image: none;
         background-color: var(--color-prominent-background);
@@ -59,8 +44,8 @@ body.dark {
     --color-link-hover-background: #f8f12a10;
     --color-prominent-background: #222526;
     --default-mono-font-weight: 300;
-    --default-copy-font-weight: 400;
-    letter-spacing: 0.35pt;
+    --default-copy-font-weight: 300;
+    letter-spacing: 0.104pt;
 }
 
 body.light {
@@ -79,6 +64,28 @@ a.no-href {
     cursor: pointer;
 }
 
-.icon-button {
-    @include buttons.icon-button();
+section.centered {
+    @include centered-page();
+}
+
+table {
+    width: 100%;
+    tr {
+        height: calc(1.5 * var(--default-zeilenabstand));
+        th,
+        td {
+            background-color: var(--color-prominent-background);
+            font-size: calc(0.85 * var(--default-font-size));
+        }
+        th {
+            text-align: left;
+            padding-left: calc(0.45 * var(--default-font-size));
+            padding-right: calc(0.65 * var(--default-font-size));
+            width: auto;
+        }
+        td {
+            padding-left: calc(0.45 * var(--default-font-size));
+            padding-right: calc(0.45 * var(--default-font-size));
+        }
+    }
 }
