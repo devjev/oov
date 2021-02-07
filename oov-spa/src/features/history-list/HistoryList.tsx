@@ -1,16 +1,19 @@
 import './history-list.scss'
 import { JSX, For, createState } from 'solid-js'
-import { Api, HistoryRecord } from '../../core'
 import { InlineMonospace } from '../../ui'
+import { HistoryRecord } from '../../app/api'
+import { store } from '../../app/store'
 
 export function HistoryList(): JSX.Element {
-  const api = new Api()
   const [state, setState] = createState({
     currentResultHash: undefined as string | undefined,
     history: [] as HistoryRecord[],
   })
 
-  api.getHistory().then((payload: HistoryRecord[]) => setState('history', payload))
+  store.subscribe(() => {
+    const storeState = store.getState()
+    setState('history', storeState.history.value)
+  })
 
   return (
     <ul class="history-list">

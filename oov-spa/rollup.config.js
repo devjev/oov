@@ -8,6 +8,7 @@ import img from 'rollup-plugin-img'
 import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
 import json from '@rollup/plugin-json'
+import replace from 'rollup-plugin-replace'
 
 const extensions = ['.tsx', '.ts', '.js', '.jsx', '.css', '.scss']
 const isDevelopmentMode = process.env.NODE_ENV !== 'prod'
@@ -23,6 +24,9 @@ export default {
   preserveEntrySignatures: false,
   plugins: [
     del({ targets: ['dist/*.css', 'dist/*.js', 'dist/static'] }),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     json(),
     scss({
       sass: require('sass'),
@@ -30,7 +34,7 @@ export default {
       outputStyle: 'compressed',
     }),
     babel({
-      extensions: extensions,
+      extensions,
       babelHelpers: 'bundled',
       presets: ['solid', '@babel/preset-typescript'],
     }),
