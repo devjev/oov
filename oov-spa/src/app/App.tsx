@@ -1,5 +1,5 @@
 import '../style/index.scss'
-import { JSX, createState } from 'solid-js'
+import { JSX, createState, Switch, Match } from 'solid-js'
 import { HistoryList } from '../features/history-list/HistoryList'
 import { NonSidebarContent, Sidebar, SidebarLayout, Link } from '../ui'
 import { ValidationResultView } from '../features'
@@ -10,6 +10,7 @@ import { invertTheme } from './api'
 export function App(): JSX.Element {
   const [state, setState] = createState({
     selectedHash: undefined as string | undefined,
+    view: undefined as 'new' | 'view' | undefined,
   })
 
   store.subscribe(() => {
@@ -18,6 +19,8 @@ export function App(): JSX.Element {
     // ensure correct theme
     const newTheme = storeState.commandBar.config.theme
     const oldTheme = invertTheme(newTheme)
+
+    setState('view', storeState.commandBar.view)
 
     replaceBodyClass(oldTheme, newTheme)
   })
@@ -36,7 +39,12 @@ export function App(): JSX.Element {
           <div class="full-height">
             <CommandBar />
             <section class="centered">
-              <ValidationResultView hash={state.selectedHash} />
+              <Switch>
+                <Match when={state.view === 'view'}>
+                  <ValidationResultView hash={state.selectedHash} />
+                </Match>
+                <Match when={state.view === 'new'}>poops</Match>
+              </Switch>
             </section>
           </div>
         </NonSidebarContent>

@@ -53,6 +53,11 @@ export function ValidationResultView<T extends ValidationResultViewProperties>(p
 
           <ValidationErrorDisplay validationResults={resultData() as ValidationResult} />
         </Match>
+        <Match when={mode() === 'idle'}>
+          <div class="empty">
+            <p>No validation result selected</p>
+          </div>
+        </Match>
       </Switch>
     </section>
   )
