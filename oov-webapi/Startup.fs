@@ -12,6 +12,7 @@ open Microsoft.AspNetCore.Cors
 open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
+open Microsoft.Extensions.FileProviders
 
 type Startup(configuration: IConfiguration) =
     member _.Configuration = configuration
@@ -28,20 +29,25 @@ type Startup(configuration: IConfiguration) =
             app.UseDeveloperExceptionPage() |> ignore
 
         let corsBuilder =
-            new Action<_>(
-                fun (builder: Infrastructure.CorsPolicyBuilder) ->
-                    builder
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowAnyOrigin()
-                    |> ignore
-            )
+            new Action<_>(fun (builder: Infrastructure.CorsPolicyBuilder) ->
+                builder
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin()
+                |> ignore)
+
+        let staticFileOptions = StaticFileOptions()
+
+        staticFileOptions.FileProvider <-
+            new PhysicalFileProvider(System.IO.Path.Combine(env.ContentRootPath, "wwwroot"))
 
         app
             .UseRouting()
             .UseCors(corsBuilder)
-            // .UseHttpsRedirection()
-            // .UseAuthorization()
+            .UseHttpsRedirection()
+            .UseAuthorization()
+            .UseDefaultFiles()
+            .UseStaticFiles(staticFileOptions)
             .UseSwagger()
             .UseEndpoints(fun endpoints -> endpoints.MapControllers() |> ignore)
         |> ignore

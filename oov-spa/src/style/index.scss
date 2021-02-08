@@ -33,7 +33,7 @@ body {
 }
 
 body.dark {
-    --color-foreground: #beb7b3;
+    --color-foreground: #e5e0e6;
     --color-background: #25282a;
     --color-link: #74d1ea;
     --color-link-hover-foreground: #fdda00;
@@ -66,6 +66,18 @@ body.light {
     --bold-mono-font-weight: 600;
     --bold-copy-font-weight: 700;
     letter-spacing: 0pt;
+
+    // &::-webkit-scrollbar {
+    //     background: red;
+    // }
+    // &::-webkit-scrollbar-button:vertical:single-button {
+    //     background: blue;
+    //     border: solid 1px white;
+    //     color: white;
+    // }
+    // &::-webkit-scrollbar-thumb {
+    //     background-color: yellow;
+    // }
 }
 
 a.no-href {
