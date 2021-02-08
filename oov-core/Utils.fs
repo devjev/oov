@@ -40,17 +40,14 @@ module Hash =
     open System.Security.Cryptography
     open System.IO
 
-    let rec private bytesToString (bytes: byte list) =
-        match bytes with
-        | head :: tail -> head.ToString("x2") + (tail |> bytesToString)
-        | [] -> ""
-
-    let private sha256 = SHA256.Create()
+    let private hasher = new SHA384Managed()
+    hasher.Initialize()
 
     let stream (stream: Stream) =
-        let result =
-            sha256.ComputeHash(stream) |> List.ofArray
+        stream.Seek(0L, System.IO.SeekOrigin.Begin)
+        |> ignore
 
-        result
+        hasher.ComputeHash(stream)
 
-    let streamAsString (s: Stream) = s |> stream |> bytesToString
+    let streamAsString (s: Stream) =
+        s |> stream |> System.Convert.ToHexString

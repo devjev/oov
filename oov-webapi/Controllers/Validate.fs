@@ -17,9 +17,13 @@ type ValidateController(logger: ILogger<ValidateController>) =
         use storeResults = new DataStore(Some("__results"))
         use storeFileNames = new DataStore(Some("__names"))
 
-        let stream = payload.Payload.OpenReadStream()
+        // Read in the entire stream into memory and only then calculate the
+        // hash Otherwise you'd calculate your hash over a random array of bytes
+        // as it is being loaded
+        let streamSource = payload.Payload.OpenReadStream()
+        use stream = new System.IO.MemoryStream()
+        streamSource.CopyTo stream
         let name = payload.Name
-
         let hash = Utils.Hash.streamAsString stream
 
         match storeResults.Read hash with

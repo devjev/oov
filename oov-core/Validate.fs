@@ -21,8 +21,13 @@ module Validate =
         | _ -> UnknownErrorType
 
     let private validateWordStream (fname: string) (stream: System.IO.Stream) =
-        use doc =
-            WordprocessingDocument.Open(stream, false)
+        // Make sure you force the stream to 0 position if it already was read
+        stream.Seek(0L, System.IO.SeekOrigin.Begin)
+        |> ignore
+
+        use buf = new System.IO.MemoryStream()
+        stream.CopyTo buf
+        use doc = WordprocessingDocument.Open(buf, false)
 
         let validator = OpenXmlValidator()
 
@@ -41,7 +46,7 @@ module Validate =
         doc.Close()
 
         let metadata =
-            makeMetadata fname <| FileType.get fname <| stream
+            makeMetadata fname <| FileType.get fname <| buf
 
         let status =
             if (Seq.length errors) > 0 then
