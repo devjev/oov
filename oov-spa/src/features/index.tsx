@@ -1,10 +1,8 @@
-import { JSX } from 'solid-js/jsx-runtime'
-
-// export { OoxmlDiagnostics } from './ooxml-diagnostics/OoxmlDiagnostics'
-// export type { OoxmlErrorsViewProperties } from './ooxml-diagnostics/OoxmlDiagnostics'
-
 export { HistoryList } from './history-list/HistoryList'
 export type { HistoryListProperties } from './history-list/HistoryList'
+
+export { NewValidation } from './new-validation/NewValidation'
+export type { NewValidationProperties } from './new-validation/NewValidation'
 
 export { ValidationResultView } from './validation-result-view/ValidationResultView'
 export type { ValidationResultViewProperties } from './validation-result-view/ValidationResultView'

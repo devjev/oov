@@ -9,11 +9,19 @@ export const historySlice = createSlice({
       // side-effects handled by Saga middleware
     },
     update: (state, action) => {
-      state.push(...action.payload)
+      for (const validationResult of action.payload) {
+        state.unshift(validationResult)
+      }
+      return state
+    },
+    prepend: (state, action) => {
+      console.log({ action })
+      state.unshift(action.payload)
+      return state
     },
   },
 })
 
-export const { initialize, update } = historySlice.actions
+export const { initialize, update, prepend } = historySlice.actions
 
 export default historySlice.reducer

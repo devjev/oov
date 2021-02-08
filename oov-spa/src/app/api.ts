@@ -91,6 +91,21 @@ export async function getByHash(hash: string): Promise<ValidationResult> {
   return json.value
 }
 
+export async function validate({ name, file }: { name: string; file: File }): Promise<ValidationResult> {
+  const formData = new FormData()
+  formData.append('name', name)
+  formData.append('payload', file)
+
+  const response = await fetch(validationEndpoint().href, {
+    method: 'POST',
+    body: formData,
+  })
+
+  const responseData: ValidationResult = await response.json()
+
+  return responseData
+}
+
 export function invertTheme(theme: 'light' | 'dark'): 'light' | 'dark' {
   switch (theme) {
     case 'light':
@@ -102,6 +117,11 @@ export function invertTheme(theme: 'light' | 'dark'): 'light' | 'dark' {
 
 function endpoint(): URL {
   return new URL(appPackage.config.endpoint)
+}
+
+function validationEndpoint(): URL {
+  const path = appPackage.config.validate
+  return new URL(path, endpoint())
 }
 
 function historyEndpoint(): URL {
