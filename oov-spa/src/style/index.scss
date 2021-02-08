@@ -1,4 +1,3 @@
-@use "buttons";
 @use "layout" as *;
 @use "typography" as *;
 @import "normalize.css/normalize";
@@ -9,7 +8,7 @@
     --mono-font: ibm-plex-mono, monospace;
     --default-font-size: 14pt;
     --default-mono-size: 10pt;
-
+    --default-border-radius: calc(var(--default-font-size) * 0.35);
     --vertical-offset: 14pt;
     --measure: 70ch;
     --sidebar-measure: 37ch;
@@ -41,7 +40,9 @@ body.dark {
     --color-link-hover-background: #f8f12a10;
     --color-prominent-background: #222526;
     --color-prominent-highlight: #1f2223;
+    --color-prominent-highlight-foreground: #545759; // this should be renamed
     --color-activated: #00c08b;
+    --color-activated-foreground: #00754a;
     --default-mono-font-weight: 300;
     --default-copy-font-weight: 300;
     --bold-mono-font-weight: 400;
@@ -57,7 +58,9 @@ body.light {
     --color-link-hover-background: #f8f12a60;
     --color-prominent-background: #f0f0f0;
     --color-prominent-highlight: #dedede;
+    --color-prominent-highlight-foreground: #dedede;
     --color-activated: #00754a;
+    --color-activated-foreground: #00c08b;
     --default-mono-font-weight: 400;
     --default-copy-font-weight: 400;
     --bold-mono-font-weight: 600;
@@ -112,8 +115,4 @@ main > {
 
 table:last-of-type {
     margin-bottom: auto;
-}
-
-button.icon {
-    @include buttons.icon-button();
 }

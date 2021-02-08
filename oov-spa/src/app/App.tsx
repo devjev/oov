@@ -1,7 +1,7 @@
 import '../style/index.scss'
 import { JSX, createState, Switch, Match } from 'solid-js'
 import { HistoryList } from '../features/history-list/HistoryList'
-import { NonSidebarContent, Sidebar, SidebarLayout, Link } from '../ui'
+import { NonSidebarContent, Sidebar, SidebarLayout, Link, DropZone } from '../ui'
 import { ValidationResultView } from '../features'
 import { CommandBar } from '../features/command-bar/CommandBar'
 import { store } from './store'
@@ -43,7 +43,9 @@ export function App(): JSX.Element {
                 <Match when={state.view === 'view'}>
                   <ValidationResultView hash={state.selectedHash} />
                 </Match>
-                <Match when={state.view === 'new'}>poops</Match>
+                <Match when={state.view === 'new'}>
+                  <DropZone messageOnEmpty="Drop your docs here" />
+                </Match>
               </Switch>
             </section>
           </div>

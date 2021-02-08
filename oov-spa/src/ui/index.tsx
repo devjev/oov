@@ -7,6 +7,9 @@ export type { LinkProperties } from './link/Link'
 export { Hash } from './hash/Hash'
 export type { HashProperties } from './hash/Hash'
 
+export { DropZone } from './drop-zone/DropZone'
+export type { DropZoneProperties } from './drop-zone/DropZone'
+
 export { SidebarLayout } from './sidebar-layout/SidebarLayout'
 export type { SidebarLayoutProperties } from './sidebar-layout/SidebarLayout'
 export { Sidebar } from './sidebar-layout/Sidebar'

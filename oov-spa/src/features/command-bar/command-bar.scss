@@ -5,7 +5,7 @@ nav.command-bar {
 
 .command-button {
     padding: calc(var(--default-font-size) * 0.75);
-    border-radius: calc(var(--default-font-size) * 0.35);
+    border-radius: var(--default-border-radius);
     color: var(--color-link);
     cursor: pointer;
     &:hover {
