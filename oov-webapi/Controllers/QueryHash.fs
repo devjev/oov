@@ -6,15 +6,17 @@ open OovWebApi.ApiModel
 open OovWebApi.Store
 open OovCore
 open Newtonsoft.Json
+open Microsoft.Extensions.Configuration
 
 [<ApiController>]
 [<Route("api/query")>]
-type QueryHashController(logger: ILogger<QueryHashController>) =
+type QueryHashController(config: IConfiguration, logger: ILogger<QueryHashController>) =
     inherit ControllerBase()
 
     [<HttpGet>]
     member _.Get(hash: string) =
-        use storeResults = new DataStore(Some("__results"))
+        let path = config.["Paths:Data:ValidationResults"]
+        use storeResults = new DataStore(path)
 
         match hash |> storeResults.Read with
         | Some (payload) ->

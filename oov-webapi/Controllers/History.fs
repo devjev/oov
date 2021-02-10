@@ -6,15 +6,20 @@ open OovWebApi.ApiModel
 open OovWebApi.Store
 open OovCore
 open Newtonsoft.Json
+open Microsoft.Extensions.Configuration
 
 [<ApiController>]
 [<Route("api/history")>]
-type HistoryController(logger: ILogger<HistoryController>) =
+type HistoryController(config: IConfiguration, logger: ILogger<HistoryController>) =
     inherit ControllerBase()
 
     [<HttpGet>]
     member _.Get() =
-        use storeFileNames = new DataStore(Some("__names"))
+        let nameDataPath =
+            config.["Paths:Data:NameLookup"]
+            |> System.IO.Path.GetFullPath
+
+        use storeFileNames = new DataStore(nameDataPath)
 
         seq {
             for (key, value) in storeFileNames.Pairs ->

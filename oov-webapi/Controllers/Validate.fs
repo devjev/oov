@@ -6,16 +6,20 @@ open OovWebApi.ApiModel
 open OovWebApi.Store
 open OovCore
 open Newtonsoft.Json
+open Microsoft.Extensions.Configuration
 
 [<ApiController>]
 [<Route("api/validate")>]
-type ValidateController(logger: ILogger<ValidateController>) =
+type ValidateController(config: IConfiguration, logger: ILogger<ValidateController>) =
     inherit ControllerBase()
 
     [<HttpPost>]
     member _.Post([<FromForm>] payload: OoxmlPayload) =
-        use storeResults = new DataStore(Some("__results"))
-        use storeFileNames = new DataStore(Some("__names"))
+        let resultsDataPath = config.["Paths:Data:ValidationResults"]
+        let nameLookupDataPath = config.["Paths:Data:NameLookup"]
+
+        use storeResults = new DataStore(resultsDataPath)
+        use storeFileNames = new DataStore(nameLookupDataPath)
 
         // Read in the entire stream into memory and only then calculate the
         // hash Otherwise you'd calculate your hash over a random array of bytes

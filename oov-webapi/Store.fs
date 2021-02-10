@@ -2,25 +2,40 @@ namespace OovWebApi.Store
 
 open RocksDbSharp
 open System
+open System.IO
 
-type DataStore(path: Option<string>) =
-
-    let dbPath =
-        match path with
-        | Some (p) -> p
-        | None -> "./__defaultdb"
-
+type DataStore(path: string) =
     let options =
         DbOptions()
             .SetCreateIfMissing(true)
             .SetCreateMissingColumnFamilies(true)
 
-    let db = RocksDb.Open(options, dbPath)
+    // TODO double check if parent directory exists, and if not, create it
+    let ensureDir path_ =
+        let pathIsDir =
+            if File.Exists(path_) then
+                let attrs = File.GetAttributes(path_)
+                (attrs &&& FileAttributes.Directory) = FileAttributes.Directory
+            else
+                true
+
+        let dir =
+            if pathIsDir then
+                path_
+            else
+                Directory.GetParent(path_).FullName
+
+        if not <| Directory.Exists(dir) then
+            Directory.CreateDirectory(dir) |> ignore
+
+    let db =
+        path |> ensureDir
+        RocksDb.Open(options, path)
 
     member _.Write(key: string, value) = db.Put(key, value)
 
     member _.Read(key: string) =
-        let byteKey = System.Text.Encoding.UTF8.GetBytes key
+        let byteKey = System.Text.Encoding.UTF8.GetBytes(key)
         let payload = db.Get(byteKey)
 
         if Object.ReferenceEquals(payload, null) then
@@ -29,7 +44,7 @@ type DataStore(path: Option<string>) =
             Some(payload)
 
     member _.Keys =
-        let rec keys(itr: Iterator) =
+        let rec keys (itr: Iterator) =
             if itr.Valid() then
                 let skey = itr.StringKey()
                 [ skey ] @ (itr.Next() |> keys)
@@ -39,7 +54,7 @@ type DataStore(path: Option<string>) =
         db.NewIterator().SeekToFirst() |> keys
 
     member _.Pairs =
-        let rec pairs(itr: Iterator) =
+        let rec pairs (itr: Iterator) =
             if itr.Valid() then
                 let key = itr.StringKey()
                 let value = itr.Value()

@@ -23,3 +23,6 @@ TODO:
           latency. Caching should be alright, since primary identity is driven
           by file digest hashes.
         * Add d3-based visualisations frequency distribution
+
+- Deployment
+  * Read [this](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-5.0)

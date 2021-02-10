@@ -21,6 +21,6 @@
         <ProjectReference Include="..\oov-core\oov-core.fsproj" />
     </ItemGroup>
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-      <Exec Command="dotnet fsi $(ProjectDir)postbuild.fsx $(ProjectDir)$(OutDir) $(ProjectDir)../oov-spa" />
+        <Exec Command="dotnet fsi $(ProjectDir)postbuild.fsx $(ProjectDir)$(OutDir) $(ProjectDir)../oov-spa" />
     </Target>
 </Project>
