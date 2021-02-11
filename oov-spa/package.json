@@ -26,6 +26,7 @@
     "@rollup/plugin-node-resolve": "^11.0.1",
     "babel-preset-solid": "^0.23.8",
     "cross-env": "^7.0.3",
+    "cypress": "^6.4.0",
     "rollup": "^2.36.1",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-delete": "^2.0.0",
