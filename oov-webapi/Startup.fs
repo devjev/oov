@@ -20,11 +20,6 @@ type Startup(configuration: IConfiguration) =
 
     // This method gets called by the runtime. Use this method to add services to the container.
     member _.ConfigureServices(services: IServiceCollection) =
-        // services.Configure<ForwardedHeadersOptions>
-        //     (fun (options: ForwardedHeadersOptions) ->
-        //         options.KnownProxies.Add(System.Net.IPAddress.Parse("10.0.0.100")))
-        // |> ignore
-        // Add framework services.
         services.AddControllers() |> ignore
         services.AddSwaggerGen() |> ignore
 
@@ -46,18 +41,9 @@ type Startup(configuration: IConfiguration) =
         staticFileOptions.FileProvider <-
             new PhysicalFileProvider(System.IO.Path.Combine(env.ContentRootPath, "wwwroot"))
 
-        let forwardedHeadersOptions = ForwardedHeadersOptions()
-
-        forwardedHeadersOptions.ForwardedHeaders <-
-            ForwardedHeaders.XForwardedFor
-            ||| ForwardedHeaders.XForwardedProto
-
         app
             .UseRouting()
             .UseCors(corsBuilder)
-            // .UseForwardedHeaders(forwardedHeadersOptions)
-            .UseHttpsRedirection()
-            // .UseAuthorization()
             .UseDefaultFiles()
             .UseStaticFiles(staticFileOptions)
             .UseSwagger()

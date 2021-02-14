@@ -26,3 +26,17 @@ TODO:
 
 - Deployment
   * Read [this](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-5.0)
+
+# Docker
+
+## Build Image
+
+`> docker build -t oov-app .`
+
+## Run Image
+
+`> docker run -p 80:80 oov-app`
+
+## CLI into your image
+
+`> docker run -it --entrypoint /bin/bash oov-app -s`

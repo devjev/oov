@@ -116,7 +116,8 @@ export function invertTheme(theme: 'light' | 'dark'): 'light' | 'dark' {
 }
 
 function endpoint(): URL {
-  return new URL(appPackage.config.endpoint)
+  const root = `${window.location.protocol}//${window.location.hostname}`
+  return new URL(root)
 }
 
 function validationEndpoint(): URL {
@@ -126,7 +127,8 @@ function validationEndpoint(): URL {
 
 function historyEndpoint(): URL {
   const path = appPackage.config.history
-  return new URL(path, endpoint())
+  const historyEndpoint = new URL(path, endpoint())
+  return historyEndpoint
 }
 
 function queryEndpoint(): URL {

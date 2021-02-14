@@ -37,7 +37,6 @@
     "sass": "^1.32.2"
   },
   "config": {
-    "endpoint": "https://localhost:5001",
     "history": "/api/history",
     "validate": "/api/validate",
     "query": "/api/query"
