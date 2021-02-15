@@ -2,7 +2,8 @@ version: 0.2
 phases:
     build:
         commands:
-            - docker build -t oov-app --output type=local,dest=docker-out .
+            - docker build -t oov-app .
+            - docker save oov-app:lates | gzip > oov-app.tar.gz
 artifacts:
     files:
-        - "*"
+        - "oov-app.tar.gz"
