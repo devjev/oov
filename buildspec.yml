@@ -1,0 +1,8 @@
+version: 0.2
+phases:
+    build:
+        commands:
+            - docker build -t oov-app --output type=local,dest=./docker-out .
+artifacts:
+    files:
+        - "docker-out/**/*"
