@@ -2,9 +2,7 @@ version: 0.2
 phases:
     build:
         commands:
-            - docker build -t oov-app --output type=local,dest=./docker-out .
-            - for d in ./*;do [[ -d "$d" ]] && echo "$d" >> tree.txt; done
+            - docker build -t oov-app --output type=local,dest=docker-out .
 artifacts:
     files:
-        - "tree.txt"
-        # - "docker-out/**/*"
+        - "*"
