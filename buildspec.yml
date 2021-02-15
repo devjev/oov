@@ -3,6 +3,8 @@ phases:
     build:
         commands:
             - docker build -t oov-app --output type=local,dest=./docker-out .
+            - tree . > tree.txt
 artifacts:
     files:
-        - "docker-out/**/*"
+        - "tree.txt"
+        # - "docker-out/**/*"
