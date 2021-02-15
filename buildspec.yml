@@ -3,7 +3,5 @@ phases:
     build:
         commands:
             - docker build -t oov-app .
-            - docker save oov-app:lates | gzip > oov-app.tar.gz
-artifacts:
-    files:
-        - "oov-app.tar.gz"
+            - docker tag oov-app:latest 792228772972.dkr.ecr.eu-central-1.amazonaws.com/oov-app:latest
+            - docker push 792228772972.dkr.ecr.eu-central-1.amazonaws.com/oov-app:latest
