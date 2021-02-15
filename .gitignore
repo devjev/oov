@@ -6,6 +6,10 @@ release/bin
 release/bin_ff
 release/bin_forge
 release/bin_profiler
+build
+
+# FAKE stuff
+*.fsx.lock
 
 # SPA output
 oov-spa/dist/oov-spa.js
