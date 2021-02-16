@@ -4,7 +4,7 @@ phases:
         commands:
             - echo Logging into Amazon ECR
             - aws --version
-            - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+            - REPOSITORY_PASSWORD=$(aws ecr get-login-password --region $AWS_DEFAULT_REGION)
             - REPOSITORY_URI=792228772972.dkr.ecr.eu-central-1.amazonaws.com/oov-app
             - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
             - IMAGE_TAG=${COMMIT_HASH:=latest}
@@ -16,5 +16,6 @@ phases:
     post_build:
         commands:
             - echo Pushing to registry
+            - docker login --username AWS --password $REPOSITORY_PASSWORD
             - docker push $REPOSITORY_URI:latest
             - docker push $REPOSITORY_URI:$IMAGE_TAG
