@@ -5,7 +5,7 @@ phases:
             - REGION=eu-central-1
             - BASE_URI=public.ecr.aws/b2g2z1d1
             - REPOSITORY_URI=$BASE_URI/oov
-            - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/b2g2z1d1
+            - aws ecr-public get-login-password --region $REGION | docker login --username AWS --password-stdin $BASE_URI
     build:
         commands:
             - docker build -t oov .
