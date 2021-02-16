@@ -4,8 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://use.typekit.net/mhw3qkq.css">
-    <link rel="stylesheet" type="text/css" href="css/oov-spa.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/mhw3qkq.css" media="none"
+        onload="if(media!=='all')media='all'" />
+    <link rel="stylesheet" type="text/css" href="css/oov-spa.css" media="none" onload="if(media!=='all')media='all'" />
+    <noscript>
+        <link rel="stylesheet" href="https://use.typekit.net/mhw3qkq.css" />
+        <link rel="stylesheet" type="text/css" href="css/oov-spa.css" media="all" />
+    </noscript>
     <title>oov</title>
 </head>
 
