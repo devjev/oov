@@ -2,13 +2,14 @@ version: 0.2
 phases:
     pre_build:
         commands:
-            # - ACCOUNT_ID=792228772972
             - REGION=eu-central-1
-            - BASE_URI=public.ecr.aws/b2g2z1d1/oov
+            - BASE_URI=public.ecr.aws/b2g2z1d1
+            - REPOSITORY_URI = $BASE_URI/oov
     build:
         commands:
-            - docker build -t $BASE_URI:latest .
+            - docker build -t oov .
+            - docker tag oov:latest $REPOSITORY_URI:latest
     post_build:
         commands:
-            - aws ecr get-login-password --region=$REGION | docker login --username AWS --password-stdin $BASE_URI
-            - docker push $BASE_URI:latest
+            - aws ecr-public get-login-password --region $REGION | docker login --username AWS --password-stdin $BASE_URI
+            - docker push $REPOSITORY_URI:latest
