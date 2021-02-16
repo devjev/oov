@@ -4,7 +4,7 @@ phases:
         commands:
             - REGION=eu-central-1
             - BASE_URI=public.ecr.aws/b2g2z1d1
-            - REPOSITORY_URI = $BASE_URI/oov
+            - REPOSITORY_URI=$BASE_URI/oov
     build:
         commands:
             - docker build -t oov .
