@@ -15,7 +15,6 @@ export const historySlice = createSlice({
       return state
     },
     prepend: (state, action) => {
-      console.log({ action })
       state.unshift(action.payload)
       return state
     },
