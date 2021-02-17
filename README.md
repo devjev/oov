@@ -2,6 +2,8 @@
 
 Example can be found [here](https://oov-app.bca93e3a4dnho.eu-central-1.cs.amazonlightsail.com/)
 
+Container repository is [here](https://gallery.ecr.aws/b2g2z1d1/oov)
+
 TODO:
 
 - oov WebAPI
