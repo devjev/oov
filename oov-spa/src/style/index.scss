@@ -1,14 +1,16 @@
 @use "layout" as *;
 @use "typography" as *;
+@use "box";
 @import "normalize.css/normalize";
 @import "@fortawesome/fontawesome-free/css/all";
 
+/// Key style parameters
 :root {
     --copy-font: aktiv-grotesk, sans-serif;
     --mono-font: ibm-plex-mono, monospace;
     --default-font-size: 14pt;
     --default-mono-size: 10pt;
-    --default-border-radius: calc(var(--default-font-size) * 0.35);
+    --default-border-radius: calc(var(--default-font-size) * 0.55);
     --vertical-offset: 14pt;
     --measure: 70ch;
     --sidebar-measure: 37ch;
@@ -44,10 +46,19 @@ body.dark {
     --color-prominent-highlight-foreground: #545759; // this should be renamed
     --color-activated: #00c08b;
     --color-activated-foreground: #00754a;
+    --color-shadow-thiccccnessss: rgba(29, 37, 45, 0.25);
+    --color-shadow-secondary: rgba(29, 37, 45, 0.11);
+    --color-shadow-highlight: rgba(242, 243, 243, 0.95);
+    --box-thiccccnessss: 1px;
     --default-mono-font-weight: 300;
     --default-copy-font-weight: 300;
     --bold-mono-font-weight: 400;
     --bold-copy-font-weight: 500;
+    --default-box-shadow: box.default-box-shadow(
+        var(--box-thiccccnessss),
+        var(--color-shadow-thiccccnessss),
+        var(--color-shadow-secondary)
+    );
     letter-spacing: 0.104pt;
 }
 
@@ -62,23 +73,20 @@ body.light {
     --color-prominent-highlight-foreground: #dedede;
     --color-activated: #00754a;
     --color-activated-foreground: #00c08b;
+    --color-shadow-thiccccnessss: rgba(29, 37, 45, 0.6);
+    --color-shadow-right: rgba(29, 37, 45, 0.3);
+    --color-shadow-left: rgba(29, 37, 45, 0.25);
+    --box-thiccccnessss: 1px;
     --default-mono-font-weight: 400;
     --default-copy-font-weight: 400;
     --bold-mono-font-weight: 600;
     --bold-copy-font-weight: 700;
+    --default-box-shadow: box.default-box-shadow(
+        var(--box-thiccccnessss),
+        var(--color-shadow-thiccccnessss),
+        var(--color-shadow-secondary)
+    );
     letter-spacing: 0pt;
-
-    // &::-webkit-scrollbar {
-    //     background: red;
-    // }
-    // &::-webkit-scrollbar-button:vertical:single-button {
-    //     background: blue;
-    //     border: solid 1px white;
-    //     color: white;
-    // }
-    // &::-webkit-scrollbar-thumb {
-    //     background-color: yellow;
-    // }
 }
 
 a.no-href {
@@ -105,6 +113,7 @@ table {
             vertical-align: top;
             padding-top: calc(0.45 * var(--default-font-size));
             padding-bottom: calc(0.45 * var(--default-font-size));
+            box-shadow: var(--default-box-shadow);
         }
         th {
             text-align: left;
@@ -119,7 +128,7 @@ table {
     }
 }
 
-main > {
+main {
     .with-sidebar > * > :first-child {
         background-image: none;
         background-color: var(--color-prominent-background);

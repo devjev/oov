@@ -1,0 +1,5 @@
+@function defalt-box-shadow($thiccccnessss, $thiccccnesss-color, $shadow-color, $shadow-side-color) {
+    @return 0 $thiccccnessss $thiccccnessss 0 $shadow-color,
+        $thiccccnessss $thiccccnessss $thiccccnessss 0 $shadow-side-color,
+        calc(-1 * $thiccccnessss) $thiccccnessss $thiccccnessss 0 $shadow-side-color;
+}
