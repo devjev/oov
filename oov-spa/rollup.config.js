@@ -32,7 +32,7 @@ export default {
     scss({
       sass: require('sass'),
       output: 'dist/css/oov-spa.css',
-      outputStyle: 'compressed',
+      // outputStyle: isDevelopmentMode ? 'expanded' : 'compressed',
     }),
     babel({
       extensions,

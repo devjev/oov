@@ -1,6 +1,6 @@
 @use "layout" as *;
 @use "typography" as *;
-@use "box";
+@use "box" as *;
 @import "normalize.css/normalize";
 @import "@fortawesome/fontawesome-free/css/all";
 
@@ -54,11 +54,11 @@ body.dark {
     --default-copy-font-weight: 300;
     --bold-mono-font-weight: 400;
     --bold-copy-font-weight: 500;
-    --default-box-shadow: box.default-box-shadow(
-        var(--box-thiccccnessss),
-        var(--color-shadow-thiccccnessss),
-        var(--color-shadow-secondary)
-    );
+    --default-box-shadow: #{default-box-shadow(
+            var(--box-thiccccnessss),
+            var(--color-shadow-thiccccnessss),
+            var(--color-shadow-secondary)
+        )};
     letter-spacing: 0.104pt;
 }
 
@@ -81,11 +81,9 @@ body.light {
     --default-copy-font-weight: 400;
     --bold-mono-font-weight: 600;
     --bold-copy-font-weight: 700;
-    --default-box-shadow: box.default-box-shadow(
-        var(--box-thiccccnessss),
-        var(--color-shadow-thiccccnessss),
-        var(--color-shadow-secondary)
-    );
+
+    $light-box-shadow: default-box-shadow(1, 2, 3);
+    --default-box-shadow: #{$light-box-shadow};
     letter-spacing: 0pt;
 }
 
