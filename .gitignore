@@ -15,7 +15,8 @@ build
 oov-spa/dist/oov-spa.js
 oov-spa/dist/oov-spa.js.map
 oov-spa/dist/css/oov-spa.css
-oov-spa/dist/webfonts/*
+oov-spa/dist/webfonts
+oov-spa/dist/static
 oov-webapi/data
 
 # Logs
