@@ -8,12 +8,34 @@ import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
 import json from '@rollup/plugin-json'
 import replace from 'rollup-plugin-replace'
-import postcss from 'rollup-plugin-postcss'
-import postcssImport from 'postcss-import'
 
+// Parameters
 const extensions = ['.tsx', '.ts', '.js', '.jsx', '.css']
 const isDevelopmentMode = process.env.NODE_ENV !== 'prod'
 
+// PostCSS
+import postcss from 'rollup-plugin-postcss'
+function cssnanoIfProductionMode() {
+  // Returns a list, so you can expand it in the plugin list bellow
+  if (isDevelopmentMode) {
+    return []
+  } else {
+    return [
+      require('cssnano')({
+        preset: [
+          'default',
+          {
+            discardComments: {
+              removeAll: true,
+            },
+          },
+        ],
+      }),
+    ]
+  }
+}
+
+// Config
 export default {
   input: ['src/oov-spa.tsx'],
   output: {
@@ -32,7 +54,7 @@ export default {
     json(),
     postcss({
       extract: 'css/oov-spa.css',
-      plugins: [postcssImport],
+      plugins: [require('postcss-import'), require('autoprefixer'), ...cssnanoIfProductionMode()],
     }),
     babel({
       extensions,

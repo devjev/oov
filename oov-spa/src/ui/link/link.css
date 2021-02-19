@@ -1,28 +1,39 @@
-div.link-container {
-    --margin-vertical-offset: calc(var(--default-font-size) * 0.1);
-    --margin-horizontal-offset: calc(var(--default-font-size) * 0.35);
-    display: inline-block;
-    border-radius: var(--default-border-radius);
-    padding: var(--margin-vertical-offset) var(--margin-horizontal-offset) var(--margin-vertical-offset)
-        var(--margin-horizontal-offset);
-    margin: calc(-1 * var(--margin-vertical-offset)) calc(-1 * var(--margin-horizontal-offset))
-        calc(-1 * var(--margin-vertical-offset)) calc(-1 * var(--margin-horizontal-offset));
+.link-container {
+  --margin-vertical-offset:   calc(var(--default-font-size) * 0.1);
+  --margin-horizontal-offset: calc(var(--default-font-size) * 0.35);
+
+  display: inline-block;
+  border-radius: var(--default-border-radius);
+
+  padding:
+    var(--margin-vertical-offset)
+    var(--margin-horizontal-offset)
+    var(--margin-vertical-offset)
+    var(--margin-horizontal-offset);
+
+  margin:
+    calc(-1 * var(--margin-vertical-offset))
+    calc(-1 * var(--margin-horizontal-offset))
+    calc(-1 * var(--margin-vertical-offset))
+    calc(-1 * var(--margin-horizontal-offset));
 }
 
-div.link-container:hover {
-    background-color: var(--color-link-hover-background);
-}
-div.link-container:hover > a {
-    color: var(--color-link-hover-foreground);
+.link-container:hover {
+  background-color: var(--color-link-hover-background);
 }
 
-div.link-container:active {
-    background-color: var(--color-activated);
-}
-div.link-container:active > a {
-    color: var(--color-background);
+.link-container:hover > a {
+  color: var(--color-link-hover-foreground);
 }
 
-div.link-container > a {
-    color: var(--color-link);
+.link-container:active {
+  background-color: var(--color-activated);
+}
+
+.link-container:active > a {
+  color: var(--color-background);
+}
+
+.link-container > a {
+  color: var(--color-link);
 }

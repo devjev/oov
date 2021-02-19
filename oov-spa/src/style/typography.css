@@ -6,14 +6,15 @@ body {
     font-style: normal;
     font-size: var(--default-font-size);
     -webkit-font-smoothing: antialiased;
-
     line-height: var(--default-zeilenabstand);
-    p {
-        line-height: var(--wide-zeilenabstand);
-        word-spacing: calc(var(--default-font-size) * 0.0975);
-        margin-bottom: calc(var(--default-font-size) * 1.75);
-        &:last-of-type {
-            margin-bottom: auto;
-        }
-    }
+}
+
+p {
+    line-height: var(--wide-zeilenabstand);
+    word-spacing: calc(var(--default-font-size) * 0.0975);
+    margin-bottom: calc(var(--default-font-size) * 1.75);
+}
+
+p:last-of-type {
+    margin-bottom: auto;
 }

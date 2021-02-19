@@ -1,4 +1,0 @@
-@function defalt-box-shadow($how-thicc, $thicc-color, $shadow-color) {
-    @return 0 $how-thicc $how-thicc 0 $thicc-color, $how-thicc $how-thicc $how-thicc 0 $shadow-color,
-        calc(-1 * $how-thicc) $how-thicc $how-thicc 0 $shadow-color;
-}

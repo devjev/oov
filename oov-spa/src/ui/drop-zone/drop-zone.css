@@ -11,6 +11,7 @@
 .drop-zone:hover {
     background-color: var(--color-link-hover-background);
 }
+
 .drop-zone .empty-message {
     line-height: var(--dropzone-height);
     text-align: center;
