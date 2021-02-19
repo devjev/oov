@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_ENV=prod rollup -c",
-    "serve": "rollup -cw"
+    "build-dev": "cross-env NODE_ENV=dev rollup -c",
+    "serve": "cross-env NODE_ENV=live rollup -cw"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",

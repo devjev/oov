@@ -11,27 +11,27 @@ import replace from 'rollup-plugin-replace'
 
 // Parameters
 const extensions = ['.tsx', '.ts', '.js', '.jsx', '.css']
-const isDevelopmentMode = process.env.NODE_ENV !== 'prod'
+const isDevelopmentBuild = () => process.env.NODE_ENV === 'dev'
+const isProductionBuild = () => process.env.NODE_ENV === 'prod'
+const isLiveMode = () => process.env.NODE_ENV === 'live'
 
 // PostCSS
 import postcss from 'rollup-plugin-postcss'
 function cssnanoIfProductionMode() {
   // Returns a list, so you can expand it in the plugin list bellow
-  if (isDevelopmentMode) {
-    return []
-  } else {
+  if (isProductionBuild()) {
+    const additionalPresets = {
+      discardComments: {
+        removeAll: true,
+      },
+    }
     return [
       require('cssnano')({
-        preset: [
-          'default',
-          {
-            discardComments: {
-              removeAll: true,
-            },
-          },
-        ],
+        preset: ['default', additionalPresets],
       }),
     ]
+  } else {
+    return []
   }
 }
 
@@ -42,9 +42,9 @@ export default {
     name: 'oov-spa',
     dir: 'dist',
     format: 'es',
-    sourcemap: isDevelopmentMode,
+    sourcemap: isDevelopmentBuild() || isLiveMode(),
   },
-  treeshake: !isDevelopmentMode,
+  treeshake: isProductionBuild(),
   preserveEntrySignatures: false,
   plugins: [
     del({ targets: ['dist/*.css', 'dist/*.js', 'dist/static'] }),
@@ -71,7 +71,7 @@ export default {
       ],
     }),
     img({ output: 'dist/static' }),
-    isDevelopmentMode && serve({ contentBase: 'dist', host: 'localhost', port: 3000 }),
-    isDevelopmentMode && livereload({ watch: 'dist', verbose: true }),
+    isLiveMode() && serve({ contentBase: 'dist', host: 'localhost', port: 3000 }),
+    isLiveMode() && livereload({ watch: 'dist', verbose: true }),
   ],
 }
