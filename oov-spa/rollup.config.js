@@ -30,7 +30,7 @@ export default {
     }),
     json(),
     scss({
-      sass: require('sass'),
+      sass: require('node-sass'),
       output: 'dist/css/oov-spa.css',
       // outputStyle: isDevelopmentMode ? 'expanded' : 'compressed',
     }),
