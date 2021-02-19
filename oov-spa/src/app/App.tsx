@@ -1,4 +1,4 @@
-import '../style/index.scss'
+import '../style/index.css'
 import { JSX, createState, Switch, Match } from 'solid-js'
 import { HistoryList } from '../features/history-list/HistoryList'
 import { NonSidebarContent, Sidebar, SidebarLayout, Link, DropZone } from '../ui'

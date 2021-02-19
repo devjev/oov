@@ -1,4 +1,4 @@
-import './link.scss'
+import './link.css'
 import { JSX, Switch, Match } from 'solid-js'
 import { ChildElement } from '../prelude'
 

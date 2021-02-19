@@ -1,10 +1,7 @@
-@use "layout" as *;
-@use "typography" as *;
-@use "box" as *;
 @import "normalize.css/normalize";
 @import "@fortawesome/fontawesome-free/css/all";
 
-/// Key style parameters
+/* Key style parameters */
 :root {
     --copy-font: aktiv-grotesk, sans-serif;
     --mono-font: ibm-plex-mono, monospace;
@@ -43,7 +40,7 @@ body.dark {
     --color-link-hover-background: #f8f12a10;
     --color-prominent-background: #222526;
     --color-prominent-highlight: #1f2223;
-    --color-prominent-highlight-foreground: #545759; // this should be renamed
+    --color-prominent-highlight-foreground: #545759; /* this should be renamed */
     --color-activated: #00c08b;
     --color-activated-foreground: #00754a;
     --color-shadow-thiccccnessss: rgba(29, 37, 45, 0.25);
@@ -54,11 +51,6 @@ body.dark {
     --default-copy-font-weight: 300;
     --bold-mono-font-weight: 400;
     --bold-copy-font-weight: 500;
-    --default-box-shadow: #{default-box-shadow(
-            var(--box-thiccccnessss),
-            var(--color-shadow-thiccccnessss),
-            var(--color-shadow-secondary)
-        )};
     letter-spacing: 0.104pt;
 }
 
@@ -81,9 +73,6 @@ body.light {
     --default-copy-font-weight: 400;
     --bold-mono-font-weight: 600;
     --bold-copy-font-weight: 700;
-
-    $light-box-shadow: default-box-shadow(1, 2, 3);
-    --default-box-shadow: #{$light-box-shadow};
     letter-spacing: 0pt;
 }
 
@@ -91,9 +80,7 @@ a.no-href {
     cursor: pointer;
 }
 
-section.centered {
-    // @include centered-page();
-}
+section.centered {}
 
 .full-height {
     min-height: 100vh;
@@ -102,35 +89,36 @@ section.centered {
 table {
     width: 100%;
     margin-bottom: var(--default-zeilenabstand);
-    tr {
-        height: calc(1.5 * var(--default-zeilenabstand));
-        th,
-        td {
-            background-color: var(--color-prominent-background);
-            font-size: calc(0.85 * var(--default-font-size));
-            vertical-align: top;
-            padding-top: calc(0.45 * var(--default-font-size));
-            padding-bottom: calc(0.45 * var(--default-font-size));
-            box-shadow: var(--default-box-shadow);
-        }
-        th {
-            text-align: left;
-            padding-left: calc(0.45 * var(--default-font-size));
-            padding-right: calc(0.65 * var(--default-font-size));
-            width: auto;
-        }
-        td {
-            padding-left: calc(0.45 * var(--default-font-size));
-            padding-right: calc(0.45 * var(--default-font-size));
-        }
-    }
 }
 
-main {
-    .with-sidebar > * > :first-child {
-        background-image: none;
-        background-color: var(--color-prominent-background);
-    }
+table > tr {
+    height: calc(1.5 * var(--default-zeilenabstand));
+}
+
+table > tr > th,td {
+    background-color: var(--color-prominent-background);
+    font-size: calc(0.85 * var(--default-font-size));
+    vertical-align: top;
+    padding-top: calc(0.45 * var(--default-font-size));
+    padding-bottom: calc(0.45 * var(--default-font-size));
+    box-shadow: var(--default-box-shadow);
+}
+
+table > tr > th {
+    text-align: left;
+    padding-left: calc(0.45 * var(--default-font-size));
+    padding-right: calc(0.65 * var(--default-font-size));
+    width: auto;
+}
+
+table > tr > td {
+    padding-left: calc(0.45 * var(--default-font-size));
+    padding-right: calc(0.45 * var(--default-font-size));
+}
+
+main .with-sidebar > * > :first-child {
+    background-image: none;
+    background-color: var(--color-prominent-background);
 }
 
 table:last-of-type {

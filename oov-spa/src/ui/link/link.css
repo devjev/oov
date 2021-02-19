@@ -7,19 +7,22 @@ div.link-container {
         var(--margin-horizontal-offset);
     margin: calc(-1 * var(--margin-vertical-offset)) calc(-1 * var(--margin-horizontal-offset))
         calc(-1 * var(--margin-vertical-offset)) calc(-1 * var(--margin-horizontal-offset));
-    &:hover {
-        background-color: var(--color-link-hover-background);
-        & > a {
-            color: var(--color-link-hover-foreground);
-        }
-    }
-    &:active {
-        background-color: var(--color-activated);
-        & > a {
-            color: var(--color-background);
-        }
-    }
-    & > a {
-        color: var(--color-link);
-    }
+}
+
+div.link-container:hover {
+    background-color: var(--color-link-hover-background);
+}
+div.link-container:hover > a {
+    color: var(--color-link-hover-foreground);
+}
+
+div.link-container:active {
+    background-color: var(--color-activated);
+}
+div.link-container:active > a {
+    color: var(--color-background);
+}
+
+div.link-container > a {
+    color: var(--color-link);
 }

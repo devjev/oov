@@ -1,0 +1,47 @@
+.history-list {
+    padding: 0;
+    margin: 0;
+}
+
+.history-list > li {
+    padding: var(--vertical-offset) var(--vertical-offset) 0 var(--vertical-offset);
+    list-style: none inside;
+    cursor: pointer;
+}
+
+.history-list > li:last-child {
+    padding: var(--vertical-offset);
+}
+
+.record-container {
+    border-radius: var(--default-border-radius);
+    padding: calc(var(--default-font-size) * 1.2);
+    background-color: var(--color-prominent-highlight);
+    box-shadow: var(--default-box-shadow);
+}
+.record-container:hover {
+    background-color: var(--color-link-hover-background);
+
+    /* All colors, both the heading and whichever text is in the container
+       should be the same color on hover. */
+    color: var(--color-link-hover-foreground);
+}
+.record-container:hover .item-heading {
+    color: var(--color-link-hover-foreground);
+}
+
+
+.record-container:active {
+    background-color: var(--color-activated);
+    color: var(--color-background);
+}
+
+.record-container .item-heading {
+    color: var(--color-background);
+}
+
+.item-heading {
+    margin-bottom: var(--vertical-offset);
+    color: var(--color-link);
+    font-weight: var(--bold-copy-font-weight);
+}

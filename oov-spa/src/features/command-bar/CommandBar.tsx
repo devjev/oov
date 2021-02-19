@@ -1,4 +1,4 @@
-import './command-bar.scss'
+import './command-bar.css'
 import { createSignal, Switch, Match } from 'solid-js'
 import { CommandButton } from './CommandButton'
 import { initialize } from './commandBarSlice'

@@ -3,14 +3,15 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import copy from 'rollup-plugin-copy'
 import del from 'rollup-plugin-delete'
-import scss from 'rollup-plugin-scss'
 import img from 'rollup-plugin-img'
 import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
 import json from '@rollup/plugin-json'
 import replace from 'rollup-plugin-replace'
+import postcss from 'rollup-plugin-postcss'
+import postcssImport from 'postcss-import'
 
-const extensions = ['.tsx', '.ts', '.js', '.jsx', '.css', '.scss']
+const extensions = ['.tsx', '.ts', '.js', '.jsx', '.css']
 const isDevelopmentMode = process.env.NODE_ENV !== 'prod'
 
 export default {
@@ -29,10 +30,9 @@ export default {
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     json(),
-    scss({
-      sass: require('node-sass'),
-      output: 'dist/css/oov-spa.css',
-      // outputStyle: isDevelopmentMode ? 'expanded' : 'compressed',
+    postcss({
+      extract: 'css/oov-spa.css',
+      plugins: [postcssImport],
     }),
     babel({
       extensions,

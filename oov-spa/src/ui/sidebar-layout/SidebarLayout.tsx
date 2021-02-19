@@ -1,4 +1,4 @@
-import './sidebar-layout.scss'
+import './sidebar-layout.css'
 import { JSX } from 'solid-js'
 import { ChildElement } from '../prelude'
 

@@ -1,4 +1,4 @@
-import './history-list.scss'
+import './history-list.css'
 import { JSX, For, createState } from 'solid-js'
 import { HistoryRecord } from '../../app/api'
 import { store } from '../../app/store'

@@ -8,14 +8,16 @@ nav.command-bar {
     border-radius: var(--default-border-radius);
     color: var(--color-link);
     cursor: pointer;
-    &:hover {
-        background-color: var(--color-link-hover-background);
-        color: var(--color-link-hover-foreground);
-    }
-    &:active {
-        background-color: var(--color-activated);
-        color: var(--color-background);
-    }
+}
+
+.command-button:hover {
+    background-color: var(--color-link-hover-background);
+    color: var(--color-link-hover-foreground);
+}
+
+.command-button:active {
+    background-color: var(--color-activated);
+    color: var(--color-background);
 }
 
 .command-bar-buttons {

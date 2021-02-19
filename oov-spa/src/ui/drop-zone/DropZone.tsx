@@ -1,4 +1,4 @@
-import './drop-zone.scss'
+import './drop-zone.css'
 import { JSX, createState, Show } from 'solid-js'
 
 export interface DropZoneProperties {
